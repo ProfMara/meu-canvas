@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>meu primeiro canvas</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+   
+
+</head>
+<body> 
+    <script src="sketch.js"></script>
+    <center>
+    <h1> Meu primeiro Canvas </h1>
+    <!--é assim que cria o canvas-->
+    <canvas id="canvas" width="600" height="600"></canvas> 
+    
+    <br>
+    <input id="cor" type="text" placeholder="Digite a cor 🎨">
+    <button id="botao"> Desenhar🖌️ </button>
+    <button id="botaoLimpar" onclick="limpar()"> Limpar 🧹 </button>
+    </center>
+
+    <script>
+       var canvas = document.getElementById("canvas");
+       var ctx = canvas.getContext("2d");
+
+       //mando começar o desenho
+        ctx.beginPath();
+       //defino a cor do desenho
+        ctx.strokeStyle = 'lime';
+       //defino a largura da linha do deseho
+        ctx.lineWidth = 20;
+       //defino o desenho
+        ctx.arc(300, 300, 100, 0, Math.PI*2);
+        
+       //mostro o desenho
+       ctx.stroke();
+
+       canvas.addEventListener("click", desenharCirculo);
+        function desenharCirculo(e){
+            //guarda em mouseX, o lugar que o mouse clicou no eixo X
+            mouseX = e.x - canvas.offsetLeft;
+            //guarda em mouseY, o lugar que o mouse clicou no eixo Y
+            mouseY = e.y -canvas.offsetTop;
+            ctx.beginPath();
+            ctx.strokeStyle = 'red';
+            ctx.lineWidth = 10;
+            ctx.arc(mouseX,mouseY, 100,0, 2*Math.PI);
+            ctx.stroke();
+        }
+
+
+    </script>
+</body>
+</html>
